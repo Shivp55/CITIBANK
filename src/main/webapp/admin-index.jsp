@@ -5,9 +5,12 @@
 <%@page import="Model.Customer" %>
 <%@page import="Model.Amount" %>
 <%@page import="Dao.AmountDao" %>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@page import="Dao.ReviewDao" %>
  <%@ page import="Model.Review" %>
+<%@page import="java.time.*"%> 
+<%@ page import="Model.Contact" %>
+<%@page import="Dao.ContactDao" %>
 <!--
 
 Author: W3layouts
@@ -52,6 +55,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 	href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
 	rel="stylesheet">
 <!--//webfonts-->
+<!-- highchart table -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highchartTable/2.0.0/jquery.highchartTable.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+<!--  -->
 
 <!-- chart -->
 <script src="admin/js/Chart.js"></script>
@@ -113,6 +121,30 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			});
 </script>
 <!-- //pie-chart -->
+<!-- Google Api Chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+</script>
+ 
+<script type="text/javascript">
+google.charts.load('current', {packages: ['corechart']});
+google.setOnLoadCallback(drawChart);
+function drawChart() { 
+ var data = google.visualization.arrayToDataTable([
+ ['Monthly Sales', 'Q1_Sales','Q2_Sales','Q3_Sales','Q4_Sales'],
+ ['Reviews', 40, 50, 60, 55],
+ ['Total Users', 50, 55, 45, 60]]);
+  
+ var options = { title : "Product Sales",
+ legend:"bottom",
+ hAxis: { title: "Sales" },
+ vAxis: { title: "Perspectives"} };
+ 
+ var chart = new 
+google.visualization.BarChart(document.getElementById("chart"));
+ chart.draw(data,options);
+} 
+</script> 
+<!-- !Google Api -->
 <!-- index page sales reviews visitors pie chart -->
 
 <!-- requried-jsfiles-for owl -->
@@ -157,7 +189,7 @@ else{
 								class="icon-bar"></span>
 						</button>
 						<h1>
-							<a class="navbar-brand" href="index.html"><span
+							<a class="navbar-brand" href="admin-index.jsp"><span
 								class="fa fa-area-chart"></span>ESB BANK<span
 								class="dashboard_text">Design dashboard</span></a>
 						</h1>
@@ -179,23 +211,23 @@ else{
 									class="admin-inbox.jsp"></i> <span>Inbox</span> <i
 									class="fa fa-angle-left pull-right"></i>
 							</a></li>
-							<li><a href="widgets.html"> <i class="fa fa-th"></i> <span>Widgets</span>
+							<li><a href="widgets.jsp"> <i class="fa fa-th"></i> <span>Widgets</span>
 									<small class="label pull-right label-info">08</small>
 							</a></li>
 							<li class="treeview"><a href="#"> <i class="fa fa-edit"></i>
 									<span>Forms</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 								<ul class="treeview-menu">
-									<li><a href="forms.html"><i class="fa fa-angle-right"></i>
+									<li><a href="forms.jsp"><i class="fa fa-angle-right"></i>
 											General Forms</a></li>
-									<li><a href="validation.html"><i
+									<li><a href="validation.jsp"><i
 											class="fa fa-angle-right"></i> Form Validations</a></li>
 								</ul></li>
 							<li class="treeview"><a href="#"> <i class="fa fa-table"></i>
 									<span>Tables</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 								<ul class="treeview-menu">
-									<li><a href="tables.html"><i class="fa fa-angle-right"></i>
+									<li><a href="tables.jsp"><i class="fa fa-angle-right"></i>
 											Simple tables</a></li>
 								</ul></li>
 							<li class="treeview"><a href="#"> <i
@@ -204,9 +236,9 @@ else{
 									class="label pull-right label-info1">08</small><span
 									class="label label-primary1 pull-right">02</span></a>
 								<ul class="treeview-menu">
-									<li><a href="inbox.html"><i class="fa fa-angle-right"></i>
+									<li><a href="inbox.jsp"><i class="fa fa-angle-right"></i>
 											Mail Inbox </a></li>
-									<li><a href="compose.html"><i
+									<li><a href="compose.jsp"><i
 											class="fa fa-angle-right"></i> Compose Mail </a></li>
 								</ul></li>
 							<li class="treeview"><a href="#"> <i
@@ -214,15 +246,15 @@ else{
 									class="fa fa-angle-left pull-right"></i>
 							</a>
 								<ul class="treeview-menu">
-									<li><a href="login.html"><i class="fa fa-angle-right"></i>
+									<li><a href="login.jsp"><i class="fa fa-angle-right"></i>
 											Login</a></li>
-									<li><a href="signup.html"><i class="fa fa-angle-right"></i>
+									<li><a href="signup.jsp"><i class="fa fa-angle-right"></i>
 											Register</a></li>
-									<li><a href="404.html"><i class="fa fa-angle-right"></i>
+									<li><a href="404.jsp"><i class="fa fa-angle-right"></i>
 											404 Error</a></li>
-									<li><a href="500.html"><i class="fa fa-angle-right"></i>
+									<li><a href="500.jsp"><i class="fa fa-angle-right"></i>
 											500 Error</a></li>
-									<li><a href="blank-page.html"><i
+									<li><a href="blank-page.jsp"><i
 											class="fa fa-angle-right"></i> Blank Page</a></li>
 								</ul></li>
 							<li class="header">LABELS</li>
@@ -502,7 +534,7 @@ else{
 							<div class="stats">
 								<h5>
 								<%int balance=AmountDao.getAllFund(); %>
-							<strong><i class="fa fa-rupee"></i><%out.print(balance); %></strong>
+							<strong><i class="fa fa-rupee" style="width:10px;margin-right:5px;"></i><%out.print(balance); %></strong>
 							
 									
 								</h5>
@@ -512,14 +544,14 @@ else{
 					</div>
 					
 					
-					<div class="col-md-3 widget">
+					<div class="col-md-3 widget widget1">
 						<div class="r3_counter_box">
 							<i class="pull-left fa fa-users dollar2 icon-rounded"></i>
 							<div class="stats">
 								<h5>
 								<%List list=CustomerDao.getAllcust(); %>
 								
-								
+								<%int ls=list.size(); %>
 								
 									<strong><%out.print(list.size()); %></strong>
 								</h5>
@@ -527,17 +559,92 @@ else{
 							</div>
 						</div>
 					</div>
-					<div class="clearfix"></div>
+					<div class="col-md-3 widget widget1">
+						<div class="r3_counter_box">
+							<i class="pull-left fa fa-users dollar2 icon-rounded"></i>
+							<div class="stats">
+								<h5>
+																
+									<strong><%
+									Date date=new Date();
+									int monthNumber=date.getMonth()+1;
+									String month=Month.of(monthNumber).name().toLowerCase();
+									out.print(Month.of(monthNumber).name().toLowerCase());
+									%>
+									 </strong>
+								</h5>
+								<span>Total Users</span>
+							</div>
+						</div>
+					</div>
+			<div class="clearfix"></div>
 				</div>
 
 				<div class="row-one widgettable">
 					<div class="col-md-7 content-top-2 card">
 						<div class="agileinfo-cdr">
 							<div class="card-header">
-								<h3>Weekly Sales</h3>
+								<h3>Monthly Sales</h3>
 							</div>
 
-							<div id="Linegraph" style="width: 98%; height: 350px"></div>
+							<div  style="width: 98%; height: 350px">
+							<table id="highchart" data-graph-container-before="1" data-graph-type="column">
+							
+							
+							            <thead>
+							            <tr><th>Month</th>
+							            <th>Sales</th>
+							            <th>Profit</th>
+							            </tr>
+							        </thead>
+							
+							        <tbody>
+							            <tr>
+							                <td>Jan</td>
+							                <td><%=(monthNumber*balance)/ls %></td>
+							                <td><%=(75000*3.5)/ls %></td>
+							            </tr>
+							            <tr>
+							                <td>Feb</td>
+							                <td><%=((monthNumber)*balance)/ls %></td>
+							                <td ><%=(75000*4.5)/ls %></td>
+							            </tr>
+							            <tr>
+							                <td>march</td>
+							                <td><%=(monthNumber*balance)/ls %></td>
+							                <td ><%=(75000*0.5)/ls %></td>
+							            </tr>
+							            <tr>
+							                <td>April</td>
+							                <td><%=((monthNumber+4)*balance)/ls %></td>
+							                <td ><%=(75000*1.8)/ls %></td>
+							            </tr>
+							            <tr>
+							                <td>May</td>
+							                <td><%=((monthNumber+5)*balance)/ls%></td>
+							                <td ><%=(75000*3)/ls %></td>
+							            </tr>
+							            <tr>
+							                <td>June</td>
+							                <td><%=((monthNumber+6)*balance)/ls %></td>
+							                <td ><%=(75000*5.5)/ls %></td>
+							            </tr><tr>
+							                <td>July</td>
+							                <td><%=((monthNumber+7)*balance)/ls%></td>
+							                <td ><%=(75000*2.9)/ls %></td>
+							            </tr><tr>
+							                <td>August</td>
+							                <td><%=((monthNumber+8)*balance)/ls %></td>
+							                <td ><%=(75000*1.3)/ls %></td>
+							            </tr>
+							            
+							        </tbody>
+							        </table>
+							       <script>
+							           $('#highchart').highchartTable();
+							       </script>
+							
+							</div>
 
 						</div>
 					</div>
@@ -545,7 +652,8 @@ else{
 						<div class="content-top-1">
 							<div class="col-md-6 top-content">
 								<h5>Sales</h5>
-								<label>1283+</label>
+								<%int sales=(ls*balance); %>
+								<label><%=(ls*balance) %></label>
 							</div>
 							<div class="col-md-6 top-content1">
 								<div id="demo-pie-1" class="pie-title-center" data-percent="45">
@@ -558,7 +666,7 @@ else{
 							<div class="col-md-6 top-content">
 								<h5>Reviews</h5>
 								<%int i=ReviewDao.allReviews(); %>
-								<label><%=i %></label>
+								<label><%=i*30 %></label>
 							</div>
 							<div class="col-md-6 top-content1">
 								<div id="demo-pie-2" class="pie-title-center" data-percent="75">
@@ -642,7 +750,12 @@ else{
 						<div class="card-header">
 							<h3>Column & Line Graph</h3>
 						</div>
-						<div id="chartdiv"></div>
+						<div id="chartdiv">
+						
+ 
+							<h1>Google API Bar Chart</h1>
+							<div id="chart" style="width:800px;height:100%;margin:0"></div>
+				</div>
 					</div>
 
 					<div class="clearfix"></div>
@@ -706,97 +819,25 @@ else{
 						<div class="activity_box">
 							<h2>Inbox</h2>
 							<div class="scrollbar" id="style-1">
-								<div class="activity-row">
-									<div class="col-xs-3 activity-img">
-										<img src='images/1.jpg' class="img-responsive" alt="" />
-									</div>
-									<div class="col-xs-7 activity-desc">
-										<h5>
-											<a href="#">Michael Chris</a>
-										</h5>
-										<p>Hey ! There I'm available.</p>
-									</div>
-									<div class="col-xs-2 activity-desc1">
-										<h6>12:05 PM</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
+								<%List<Contact> list3=ContactDao.getAllMessages(); %>
+								<%for(Contact c:list3){ %>
+								
 								<div class="activity-row">
 									<div class="col-xs-3 activity-img">
 										<img src='images/4.jpg' class="img-responsive" alt="" />
 									</div>
 									<div class="col-xs-7 activity-desc">
 										<h5>
-											<a href="#">Alexander</a>
+											<a href="#"><%=c.getName() %></a>
 										</h5>
-										<p>Hey ! There I'm available.</p>
+										<p><%=c.getMessage() %></p>
 									</div>
 									<div class="col-xs-2 activity-desc1">
-										<h6>12:06 PM</h6>
+										<h6><%=c.getTime() %></h6>
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<div class="activity-row">
-									<div class="col-xs-3 activity-img">
-										<img src='images/3.jpg' class="img-responsive" alt="" />
-									</div>
-									<div class="col-xs-7 activity-desc">
-										<h5>
-											<a href="#">Daniel Lucas</a>
-										</h5>
-										<p>Hey ! There I'm available.</p>
-									</div>
-									<div class="col-xs-2 activity-desc1">
-										<h6>01:30 PM</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="activity-row">
-									<div class="col-xs-3 activity-img">
-										<img src='images/2.jpg' class="img-responsive" alt="" />
-									</div>
-									<div class="col-xs-7 activity-desc">
-										<h5>
-											<a href="#">Jackson Jacob</a>
-										</h5>
-										<p>Hey ! There I'm available.</p>
-									</div>
-									<div class="col-xs-2 activity-desc1">
-										<h6>01:50 PM</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="activity-row">
-									<div class="col-xs-3 activity-img">
-										<img src='images/1.jpg' class="img-responsive" alt="" />
-									</div>
-									<div class="col-xs-7 activity-desc">
-										<h5>
-											<a href="#">David Samuel</a>
-										</h5>
-										<p>Hey ! There I'm available.</p>
-									</div>
-									<div class="col-xs-2 activity-desc1">
-										<h6>12:20 PM</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-
-								<div class="activity-row">
-									<div class="col-xs-3 activity-img">
-										<img src='images/4.jpg' class="img-responsive" alt="" />
-									</div>
-									<div class="col-xs-7 activity-desc">
-										<h5>
-											<a href="#">laura Smith</a>
-										</h5>
-										<p>Hey ! There I'm available.</p>
-									</div>
-									<div class="col-xs-2 activity-desc1">
-										<h6>12:50 PM</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
+								<%} %>
 							</div>
 							<form action="#" method="post">
 								<input type="text" value="Enter your text"
@@ -935,11 +976,7 @@ else{
 		</div>
 		<!--footer-->
 		<div class="footer">
-			<p>
-				&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by
-				<a href="https://w3layouts.com/" target="_blank">w3layouts</a>
-			</p>
-		</div>
+					</div>
 		<!--//footer-->
 	</div>
 

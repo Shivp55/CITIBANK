@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%@page import="java.util.*"%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,13 +31,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
 				<div class="agileits-logo navbar-left">
-					<h1><a href="index.html"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
+					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>SB BANK</a></h1> 
 				</div> 
 				<div class="agileits-hdright nav navbar-nav">
 					<div class="header-w3top"><!-- header-top --> 
 						<ul class="w3l-nav-top">
-							<li><i class="fa fa-phone"></i><span> +01 222 111 444 </span></li> 
-							<li><a href="mailto:example@mail.com"><i class="fa fa-envelope-o"></i> <span> mail@example.com</span></a></li>
+							<li><i class="fa fa-phone"></i><span> 7984847671</span></li> 
+							<li><a href="https://google.com" target="blank"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
 						</ul>
 						<div class="clearfix"> </div> 	 
 					</div>
@@ -74,17 +69,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- top-nav -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>    
-						<li><a href="services.html">services</a></li>    
-						<li><a href="gallery.html">Gallery</a></li>    
-						<li><a href="icons.html" data-toggle="dropdown">Short Codes<span class="caret"></span></a>
+						<li><a href="index.jsp" class="active">Home</a></li>
+						<li><a href="#" data-toggle="dropdown">Customer<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="icons.html">Icons</a></li>
-								<li><a href="typography.html">Typograpghy</a></li>
+								<li><a href="customer-register.jsp">Register</a></li>
+								<li><a href="customer-login.jsp">Login</a></li>
 							</ul>
-						</li>	
-						<li><a href="contact.html" class="active">Contact Us</a></li>
+						</li>
+						<li><a href="#" data-toggle="dropdown">Admin<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="admin-login.jsp">Login</a></li>
+								
+							</ul>
+						</li>    
+						<li><a href="services.jsp" class="scroll">services</a></li>    
+						<li><a href="gallery.jsp" class="scroll">Gallery</a></li>  
+						<li><a href="about.jsp" class="scroll">About</a></li>  
+							
+						
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
@@ -112,21 +114,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="agileits_mail_grid_right_grid">
 						<h4>Contact Info</h4>
 						<ul class="contact_info">
-							<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block,3FB,New Jersey.</li>
-							<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-							<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+							<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Nadiad,Gujarat</li>
+							<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">shivparekh803@gmail.com</a></li>
+							<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>7984847671</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-7 w3l_contact_form">
 					<h4>Contact Form</h4> 
-					<form action="#" method="post">
-						<input type="text" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-						<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-						<input type="text" name="Phone" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" required="">
-						<textarea name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-						<input type="submit" value="Submit">
+					<form action="ContactController" method="post">
+						<input type="hidden" name="time" value="<%Date date=new Date(); %><%=date.getHours() %>:<%=date.getMinutes()  %>:<%=date.getSeconds() %>" placeholder="Enter Name" required="">
+						<input type="text" name="name" placeholder="Enter Name" required="">
+						<input type="email" name="email" placeholder="Enter Email"  required="">
+						<input type="text" name="contact" placeholder="Enter Contact Number" required="">
+						<textarea name="message" placeholder="Enter Message " required=""></textarea>
+						<input type="submit" name="action" value="Submit">
+						
+						
 					</form>
+					<h4>
+					<%String msg8=(String)request.getAttribute("msg8"); %>
+					<%if(msg8!=null){ 
+						out.print(msg8);
+					
+					} %>
+					</h4>
 				</div>
 				
 				<div class="clearfix"> </div>
@@ -140,13 +152,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="container">
 		<div class="col-md-7 list-footer">
 		  <ul class="footer-nav">
-				<li><a  href="index.html">Home</a></li>
-				<li><a  href="about.html">About</a></li>
-				<li><a  href="services.html">Services</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a  href="index.jsp">Home</a></li>
+				<li><a  href="about.jsp">About</a></li>
+				<li><a  href="services.jsp">Services</a></li>
+				<li><a href="gallery.jsp">Gallery</a></li>
+				<li><a href="contact.jsp">Contact Us</a></li>
 		  </ul>
-		  <p>Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et ctetur adipiscing elit. Cras rutrum iaculis</p>
+		 
 		</div>
 		<div class="col-md-5 agileinfo-sub">
 			<h6>Click the link below to start the subscription service</h6>
@@ -156,7 +168,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-		<p>© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+		
 	</div>
 <!--//footer-->	
 	<!-- subscribe -->

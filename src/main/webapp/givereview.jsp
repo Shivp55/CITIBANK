@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,18 +27,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </head>
 <body> 
-	<!-- header -->
+<!-- header -->
 	<div class="headerw3-agile"> 
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
 				<div class="agileits-logo navbar-left">
-					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
+					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>SB BANK</a></h1> 
 				</div> 
 				<div class="agileits-hdright nav navbar-nav">
 					<div class="header-w3top"><!-- header-top --> 
 						<ul class="w3l-nav-top">
 							<li><i class="fa fa-phone"></i><span> 7984847671</span></li> 
-							<li><a href="shivparekh803@gmail.com"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
+							<li><a href="https://google.com" target="blank"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
 						</ul>
 						<div class="clearfix"> </div> 	 
 					</div>
@@ -187,11 +183,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="container">
 		<div class="col-md-7 list-footer">
 		  <ul class="footer-nav">
-				<li><a  href="index.html">Home</a></li>
-				<li><a  href="about.html">About</a></li>
-				<li><a  href="services.html">Services</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a  href="index.jsp">Home</a></li>
+				<li><a  href="about.jsp">About</a></li>
+				<li><a  href="services.jsp">Services</a></li>
+				<li><a href="gallery.jsp">Gallery</a></li>
+				<li><a href="contact.jsp">Contact Us</a></li>
 		  </ul>
 		  <p>Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et ctetur adipiscing elit. Cras rutrum iaculis</p>
 		</div>
@@ -203,7 +199,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-		<p>© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+		<p>©  Design by  <a href="//shivparekh803@gmail.com/">Shaishav Parekh</a></p>
 	</div>
 <!--//footer-->	
 	<!-- subscribe -->

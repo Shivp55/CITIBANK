@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,13 +30,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
 				<div class="agileits-logo navbar-left">
-					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
+					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>SB BANK</a></h1> 
 				</div> 
 				<div class="agileits-hdright nav navbar-nav">
 					<div class="header-w3top"><!-- header-top --> 
 						<ul class="w3l-nav-top">
 							<li><i class="fa fa-phone"></i><span> 7984847671</span></li> 
-							<li><a href="shivparekh803@gmail.com"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
+							<li><a href="https://google.com" target="blank"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
 						</ul>
 						<div class="clearfix"> </div> 	 
 					</div>
@@ -74,17 +68,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- top-nav -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>    
-						<li><a href="services.html" class="active">services</a></li>    
-						<li><a href="gallery.html">Gallery</a></li>    
-						<li><a href="icons.html" data-toggle="dropdown">Short Codes<span class="caret"></span></a>
+						<li><a href="index.jsp" class="active">Home</a></li>
+						<li><a href="#" data-toggle="dropdown">Customer<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="icons.html">Icons</a></li>
-								<li><a href="typography.html">Typograpghy</a></li>
+								<li><a href="customer-register.jsp">Register</a></li>
+								<li><a href="customer-login.jsp">Login</a></li>
 							</ul>
-						</li>	
-						<li><a href="contact.html">Contact Us</a></li>
+						</li>
+						<li><a href="#" data-toggle="dropdown">Admin<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="admin-login.jsp">Login</a></li>
+								
+							</ul>
+						</li>    
+						<li><a href="services.jsp" class="scroll">services</a></li>    
+						<li><a href="gallery.jsp" class="scroll">Gallery</a></li>  
+						<li><a href="about.jsp" class="scroll">About</a></li>  
+							
+						
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
@@ -205,11 +206,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="container">
 		<div class="col-md-7 list-footer">
 		  <ul class="footer-nav">
-				<li><a  href="index.html">Home</a></li>
-				<li><a  href="about.html">About</a></li>
-				<li><a  href="services.html">Services</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a  href="index.jsp">Home</a></li>
+				<li><a  href="about.jsp">About</a></li>
+				<li><a  href="services.jsp">Services</a></li>
+				<li><a href="gallery.jsp">Gallery</a></li>
+				<li><a href="contact.jsp">Contact Us</a></li>
 		  </ul>
 		  <p>Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et ctetur adipiscing elit. Cras rutrum iaculis</p>
 		</div>

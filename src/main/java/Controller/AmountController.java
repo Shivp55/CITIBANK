@@ -43,6 +43,8 @@ public class AmountController extends HttpServlet {
 		String action=request.getParameter("action");
 		if(action.equalsIgnoreCase("Deposit")) {
 			Amount a=new Amount();
+			int pin1=Integer.parseInt(request.getParameter("pin1"));
+			int pin2=Integer.parseInt(request.getParameter("pin2"));
 			a.setCid(Integer.parseInt(request.getParameter("id")));
 			a.setBalance(request.getParameter("amount"));
 			a.setAccountname(request.getParameter("name"));
@@ -50,37 +52,63 @@ public class AmountController extends HttpServlet {
 			boolean flag1=AmountDao.checkBalance(a);
 			
 			if(flag1==true) {
+				if(pin1==pin2) {
 					AmountDao.updateAmount(a);
-					request.getRequestDispatcher("customer-index.jsp").forward(request, response);
+					request.setAttribute("deposit1", "Amount Updated");
+					request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
+				}
+			
+				else {
+				request.setAttribute("deposit2", "Declined..Check Pin");
+				request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
 				}
 				
+			}
 				
-				
-			
 			else {
+				if(pin1==pin2) {
 				AmountDao.InsertAmount(a);
-				request.getRequestDispatcher("customer-index.jsp").forward(request, response);
-			
+				request.setAttribute("deposit3", "Amount Inserted");
+				request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
+				}
+				else {
+					request.setAttribute("deposit4", "Declined..Check Pin");
+					request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
+					}
 			}
 			
 	}
 
 		else if(action.equalsIgnoreCase("Send")) {
+			int pin1=Integer.parseInt(request.getParameter("pin1"));
+			int pin2=Integer.parseInt(request.getParameter("pin2"));
 			int id=Integer.parseInt(request.getParameter("id"));
+			int balance1=Integer.parseInt(request.getParameter("amount"));
 			String amount=request.getParameter("amount");
 			Amount a=new Amount();
-			
+			int balance=AmountDao.checkBalanceForSend(id);
 			a.setCid(Integer.parseInt(request.getParameter("accntnum")));
 			a.setBalance(request.getParameter("amount"));
 			a.setAccountname(request.getParameter("name"));
 			a.setMessage(request.getParameter("message"));
 			System.out.print(id+amount);
-			AmountDao.sendMoney(a);
-			AmountDao.updateMoney(id, amount);
-			response.sendRedirect("customer-index.jsp");
-			
-			
-			
+			if(balance>=balance1) {
+				if(pin1==pin2) {
+					AmountDao.sendMoney(a);
+					AmountDao.updateMoney(id, amount);
+					request.setAttribute("sent", "Money Sent Successfully");
+					request.getRequestDispatcher("customer-send-money.jsp").forward(request, response);
+				
+				}
+				else {
+					request.setAttribute("sent1", "Money Not Sent.. Check Pin");
+					request.getRequestDispatcher("customer-send-money.jsp").forward(request, response);
+				}
+			}
+			else {
+				request.setAttribute("sent2", "Balance is less for transaction");
+				request.getRequestDispatcher("customer-send-money.jsp").forward(request, response);
+			}
 		}
 	}
 }

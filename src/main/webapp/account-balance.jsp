@@ -4,16 +4,10 @@
     <%@ page import="Model.Amount" %>
     <%@page import="Dao.AmountDao" %>
     <%@page import="java.util.*" %>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>E-Banking </title>
+<title>Account Balance </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="E-Banking Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -50,13 +44,13 @@ else{
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
 				<div class="agileits-logo navbar-left">
-					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
+					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>SB BANK</a></h1> 
 				</div> 
 				<div class="agileits-hdright nav navbar-nav">
 					<div class="header-w3top"><!-- header-top --> 
 						<ul class="w3l-nav-top">
 							<li><i class="fa fa-phone"></i><span> 7984847671</span></li> 
-							<li><a href="shivparekh803@gmail.com"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
+							<li><a href="https://google.com" target="blank"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
 						</ul>
 						<div class="clearfix"> </div> 	 
 					</div>
@@ -96,10 +90,11 @@ else{
 								<li><a href="logout.jsp">Logout</a>
 							</ul>
 						</li>
-						<li><a href="icons.html" data-toggle="dropdown">Activity<span class="caret"></span></a>
+						<li><a href="#" data-toggle="dropdown">Activity<span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<li><a href="register-pin.jsp">Register Pin</a></li>
 								<li><a href="deposit-money.jsp">Deposit Money</a></li>
-								<li><a href="send-money.jsp">Send Money</a></li>
+								<li><a href="customer-send-money.jsp">Send Money</a></li>
 								<li><a href="transactions.jsp">View Transactions</a></li>
 								<li><a href="account-balance.jsp">Account Balance</a></li>
 								<li><a href="apply-debit.jsp">Apply Debit</a></li>
@@ -107,11 +102,11 @@ else{
 								
 							</ul>
 						</li>    
-						<li><a href="services.jsp" class="scroll">services</a></li>    
-						<li><a href="gallery.jsp" class="scroll">Gallery</a></li>  
-						<li><a href="about.jsp" class="scroll">About</a></li>  
+						    
+						<li><a href="givereview.jsp" class="scroll">Review Us</a></li>  
+						
 							
-						<li><a href="contact.html" class="scroll">Contact Us</a></li>
+						<li><a href="contact.jsp" class="scroll">Contact Us</a></li>
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
@@ -125,15 +120,14 @@ else{
 	<div class="w3ls-section contact">
 		<div class="container"> 
 			<div class="w3ls-title">
-				<h2 class="h3-w3l">Customer Change Password</h2> 
+				<h2 class="h3-w3l">Customer Balance</h2> 
 			</div>  
 			
 			<div class="contact_wthreerow agileits-w3layouts">
 			<div class="col-md-5 agileits_w3layouts_contact_gridl">
 					<div class="agileits_mail_grid_right_grid">
-						<h4>Change Password</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus, 
-							ut aut reiciendis voluptatibus maiores alias consequatur.</p>
+						<h4>Account Balance Enquiry</h4>
+						<p>Your Account Balance is as Below</p>
 					</div> 
 					
 				</div>
@@ -154,13 +148,14 @@ else{
 			</thead>
 			<tbody>
 			<%int id=c.getId(); %>
+			<%String name=c.getFname();c.getMname();c.getLname();%>
 				<%List<Amount> list=AmountDao.viewBalance(id); %>
 				<%for(Amount a:list){ %>
 	
 					<tr>
 					
 					
-					<td><h2>&nbsp;&nbsp;<%=a.getAccountname() %>&nbsp;&nbsp;</h2></td>					
+					<td><h2>&nbsp;&nbsp;<%=c.getFname()%>&nbsp;<%=c.getMname() %>&nbsp;<%=c.getLname() %> &nbsp;&nbsp;</h2></td>					
 					
 				
 					<td><h2 align="center">&nbsp;<i class="fa fa-rupee"></i>&nbsp;<%=a.getBalance() %>&nbsp;&nbsp;</h2></td>					
@@ -186,11 +181,11 @@ else{
 	<div class="container">
 		<div class="col-md-7 list-footer">
 		  <ul class="footer-nav">
-				<li><a  href="index.html">Home</a></li>
-				<li><a  href="about.html">About</a></li>
-				<li><a  href="services.html">Services</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a  href="index.jsp">Home</a></li>
+				<li><a  href="about.jsp">About</a></li>
+				<li><a  href="services.jsp">Services</a></li>
+				<li><a href="gallery.jsp">Gallery</a></li>
+				<li><a href="contact.jsp">Contact Us</a></li>
 		  </ul>
 		  <p>Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et ctetur adipiscing elit. Cras rutrum iaculis</p>
 		</div>
@@ -202,7 +197,7 @@ else{
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-		<p>© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+		
 	</div>
 <!--//footer-->	
 	<!-- subscribe -->

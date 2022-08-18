@@ -2,14 +2,10 @@
     pageEncoding="UTF-8"%>
     <%@page import="Model.Customer"%>
     <%@page import="Model.Amount" %>
+     <%@page import="Model.PinModel"%>
+    <%@page import="Dao.PinDao"%>
     
     <%@page import="Dao.AmountDao" %>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,18 +48,18 @@ else{
 
 %>
 
-	<!-- header -->
+<!-- header -->
 	<div class="headerw3-agile"> 
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
 				<div class="agileits-logo navbar-left">
-					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
+					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>SB BANK</a></h1> 
 				</div> 
 				<div class="agileits-hdright nav navbar-nav">
 					<div class="header-w3top"><!-- header-top --> 
 						<ul class="w3l-nav-top">
 							<li><i class="fa fa-phone"></i><span> 7984847671</span></li> 
-							<li><a href="shivparekh803@gmail.com"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
+							<li><a href="https://google.com" target="blank"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
 						</ul>
 						<div class="clearfix"> </div> 	 
 					</div>
@@ -103,8 +99,9 @@ else{
 								<li><a href="logout.jsp">Logout</a>
 							</ul>
 						</li>
-						<li><a href="icons.html" data-toggle="dropdown">Activity<span class="caret"></span></a>
+						<li><a href="#" data-toggle="dropdown">Activity<span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<li><a href="register-pin.jsp">Register Pin</a></li>
 								<li><a href="deposit-money.jsp">Deposit Money</a></li>
 								<li><a href="customer-send-money.jsp">Send Money</a></li>
 								<li><a href="transactions.jsp">View Transactions</a></li>
@@ -114,32 +111,59 @@ else{
 								
 							</ul>
 						</li>    
-						<li><a href="services.jsp" class="scroll">services</a></li>    
-						<li><a href="gallery.jsp" class="scroll">Gallery</a></li>  
-						<li><a href="about.jsp" class="scroll">About</a></li>  
+						    
+						<li><a href="givereview.jsp" class="scroll">Review Us</a></li>  
+						
 							
-						<li><a href="contact.html" class="scroll">Contact Us</a></li>
+						<li><a href="contact.jsp" class="scroll">Contact Us</a></li>
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
 			</nav>    
 		</div>
 		<!-- banner-text -->
-		<!-- banner -->
-	</div>	
+		<!-- banner -->	</div>	
 	<!-- contact -->
 	<div class="w3ls-section contact">
 		<div class="container"> 
 			<div class="w3ls-title">
-				<h2 class="h3-w3l">Customer Change Password</h2> 
+				<h2 class="h3-w3l">Send Money</h2> 
 			</div>  
 			
 			<div class="contact_wthreerow agileits-w3layouts">
 			<div class="col-md-5 agileits_w3layouts_contact_gridl">
 					<div class="agileits_mail_grid_right_grid">
-						<h4>Change Password</h4>
-						<p>Itaque earum rerum hic tenetur a sapiente delectus, 
-							ut aut reiciendis voluptatibus maiores alias consequatur.</p>
+						<h4>Customer Send Money</h4>
+						<h4>
+						<%String sent=(String)request.getAttribute("sent"); %>
+						<%if(sent!=null){
+							out.print(sent);
+							
+						}	
+							%>
+						
+						</h4>
+						<h4>
+						<%String sent1=(String)request.getAttribute("sent1"); %>
+						<%if(sent1!=null){
+							out.print(sent1);
+							
+						}	
+							%>
+						
+						</h4>
+						
+						<h4>
+						<%String sent2=(String)request.getAttribute("sent2"); %>
+						<%if(sent2!=null){
+							out.print(sent2);
+							
+						}	
+							%>
+						
+						</h4>
+						
+
 					</div> 
 					
 				</div>
@@ -148,20 +172,33 @@ else{
 				
 					
 					<form action="AmountController" method="post" >
+					
+					<%int id=c.getId(); %>
+						<%int p=PinDao.checkPinInsert(id);%>
+						
 					<table style="border:4px solid black;" >
+					<tr>
+							<td colspan="5">&nbsp;</td>
+						</tr>
 						
 						<tr>
 							
 							<td colspan="3"><input type="hidden" name="id" value="<%=c.getId()%>"></td>
+							<td colspan="3"><input type="hidden" name="pin1" value="<%=p%>"></td>
 							
 						</tr>
 						<tr>
-						<td>
+							<td colspan="5">&nbsp;</td>
+						</tr>
+						<tr>
+						<td colspan="3">
 							<input type="text" name="accntnum" placeholder="Enter Valid account Number" >
 							</td>
-							<td colspan="2">&nbsp;</td>
+							
 						</tr>
-						
+						<tr>
+							<td colspan="5">&nbsp;</td>
+						</tr>
 						<tr>
 						<td>
 							<input type="text" name="amount" placeholder="Enter amount in Rupees" >
@@ -182,7 +219,15 @@ else{
 							<input type="text" name="message" placeholder="Enter message">
 							</td>
 						</tr>
-						
+						<tr>
+						<td colspan="5">&nbsp;</td>
+						</tr>
+						<tr>
+							<td >&nbsp;</td>
+						<td>
+							<input type="password" name="pin2" placeholder="Enter 4 digit pin ">
+							</td>
+						</tr>
 						</tr>
 						<tr>
 						<td colspan="5">&nbsp;</td>
@@ -235,11 +280,11 @@ else{
 	<div class="container">
 		<div class="col-md-7 list-footer">
 		  <ul class="footer-nav">
-				<li><a  href="index.html">Home</a></li>
-				<li><a  href="about.html">About</a></li>
-				<li><a  href="services.html">Services</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a  href="index.jsp">Home</a></li>
+				<li><a  href="about.jsp">About</a></li>
+				<li><a  href="services.jsp">Services</a></li>
+				<li><a href="gallery.jsp">Gallery</a></li>
+				<li><a href="contact.jsp">Contact Us</a></li>
 		  </ul>
 		  <p>Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et ctetur adipiscing elit. Cras rutrum iaculis</p>
 		</div>

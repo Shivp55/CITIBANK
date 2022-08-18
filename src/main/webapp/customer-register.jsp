@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,13 +29,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
 				<div class="agileits-logo navbar-left">
-					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
+					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>SB BANK</a></h1> 
 				</div> 
 				<div class="agileits-hdright nav navbar-nav">
 					<div class="header-w3top"><!-- header-top --> 
 						<ul class="w3l-nav-top">
-							<li><i class="fa fa-phone"></i><span> +91 7984847671</span></li> 
-							<li><a href="mailto:example@mail.com"><i class="fa fa-envelope-o"></i> <span> shivparekh803@gmail.com</span></a></li>
+							<li><i class="fa fa-phone"></i><span> 7984847671</span></li> 
+							<li><a href="https://google.com" target="blank"><i class="fa fa-envelope-o"></i><span>shivparekh803@gmail.com</span></a></li>
 						</ul>
 						<div class="clearfix"> </div> 	 
 					</div>
@@ -153,26 +147,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												
 						<td>&nbsp;</td>
 						
-						<td align="center"><input type="text" name="contact" placeholder="Enter Phone Number" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" required="">
+						<td align="center"><input type="text" name="contact" placeholder="Enter Phone Number"  required="">
 						</td>
 						</tr>
 						<tr>
 						<td colspan="3">&nbsp;</td>
 						</tr>
 						<tr>
-						<td align="center" colspan="3"><input type="text" name="address" placeholder="Enter Address" value="address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" required="">
+						<td align="center" colspan="3"><input type="text" name="address" placeholder="Enter Address"  required="">
 						</td>
 						
 						</tr>
 						<tr>
 						<td >&nbsp;</td>
-						<td ><input type="text" name="pin" placeholder="Enter Pin" value="Pin" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" required=""></td>
+						
 						</tr>
 						<tr>
 						<td colspan="2">
-						<input type="email" name="email" placeholder="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+						<input type="email" name="email" placeholder="Enter Email"  required="">
 						</td>
-						<td align="center"><input type="text" name="password" placeholder="Enter Your Password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" required="">
+						<td align="center"><input type="text" name="password" placeholder="Enter Your Password"  required="">
 						</td>
 						</tr>
 						<tr>

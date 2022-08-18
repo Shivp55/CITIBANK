@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <!--
 Author: W3layouts
@@ -34,7 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
 				<div class="agileits-logo navbar-left">
-					<h1><a href="index.html"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
+					<h1><a href="index.jsp"><img src="images/e.png" alt="logo"/>Banking</a></h1> 
 				</div> 
 				<div class="agileits-hdright nav navbar-nav">
 					<div class="header-w3top"><!-- header-top --> 
@@ -72,17 +74,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- top-nav -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html" class="active">About</a></li>    
-						<li><a href="services.html">services</a></li>    
-						<li><a href="gallery.html">Gallery</a></li>    
-						<li><a href="icons.html" data-toggle="dropdown">Short Codes<span class="caret"></span></a>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="about.jsp" class="active">About</a></li>    
+						<li><a href="services.jsp">services</a></li>    
+						<li><a href="gallery.jsp">Gallery</a></li>    
+						<li><a href="icons.jsp" data-toggle="dropdown">Short Codes<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="icons.html">Icons</a></li>
-								<li><a href="typography.html">Typograpghy</a></li>
+								<li><a href="icons.jsp">Icons</a></li>
+								<li><a href="typography.jsp">Typograpghy</a></li>
 							</ul>
 						</li>	
-						<li><a href="contact.html">Contact Us</a></li>
+						<li><a href="contact.jsp">Contact Us</a></li>
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
@@ -312,11 +314,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="container">
 		<div class="col-md-7 list-footer">
 		  <ul class="footer-nav">
-				<li><a  href="index.html">Home</a></li>
-				<li><a  href="about.html">About</a></li>
-				<li><a  href="services.html">Services</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a  href="index.jsp">Home</a></li>
+				<li><a  href="about.jsp">About</a></li>
+				<li><a  href="services.jsp">Services</a></li>
+				<li><a href="gallery.jsp">Gallery</a></li>
+				<li><a href="contact.jsp">Contact Us</a></li>
 		  </ul>
 		  <p>Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et ctetur adipiscing elit. Cras rutrum iaculis</p>
 		</div>
@@ -328,7 +330,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-		<p>Â© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+		<p>© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
 	</div>
 <!--//footer-->	
 <!-- modal-subscribe -->

@@ -49,6 +49,26 @@ public class AmountDao {
 		}
 		return flag;	
 	}
+	public static int checkBalanceForSend(int id) {
+		int balance=0;
+		try {
+			Connection conn = DBConnection.createConnection();
+			String sql="select * from balance where cid=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, id);
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()) {
+				balance=rs.getInt("balance");
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return balance;	
+	}
+
 	
 
 	

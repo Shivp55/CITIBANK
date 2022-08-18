@@ -7,12 +7,6 @@
 <%@ page import="Model.Amount" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -662,10 +656,7 @@ else{
 		</div>
 		<!--footer-->
 		<div class="footer">
-			<p>
-				&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by
-				<a href="https://w3layouts.com/" target="_blank">w3layouts</a>
-			</p>
+			
 		</div>
 		<!--//footer-->
 	</div>

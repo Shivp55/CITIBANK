@@ -89,7 +89,7 @@ public class CustomerDao {
 	public static void updateCustomer(Customer c) {
 		try {
 			Connection conn=DBConnection.createConnection();
-			String sql="update customer set fname=?,mname=?,lname=?,account=?,contact=?,address=?,email=? where id=?";
+			String sql="update customer set fname=?,mname=?,account=?,lname=?,contact=?,address=?,email=? where id=?";
 			PreparedStatement pst=conn.prepareStatement(sql);
 			pst.setString(1, c.getFname());
 			pst.setString(2, c.getMname());
