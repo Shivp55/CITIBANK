@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="Dao.CustomerDao" %>
+    <%@page import="Model.Customer" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +28,24 @@
 
 </head>
 <body> 
-	<!-- header -->
+<%
+
+Customer c=null;
+if(session.getAttribute("data")!=null){
+	c=(Customer)session.getAttribute("data");
+	
+	
+	
+}
+else{
+	response.sendRedirect("customer-login.jsp");
+}
+
+
+
+%>
+
+<!-- header -->
 	<div class="headerw3-agile"> 
 		<div class="header-w3mdl"><!-- header-two --> 
 			<div class="container"> 
@@ -56,7 +76,7 @@
 	</div>	
 	<!-- //header -->  
 	<!-- banner -->
-	<div class="banner inner-banner">
+	<div >
 		<div class="header-nav"><!-- header-three --> 	
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
@@ -68,24 +88,31 @@
 				<!-- top-nav -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="index.jsp" class="active">Home</a></li>
-						<li><a href="#" data-toggle="dropdown">Customer<span class="caret"></span></a>
+						<li><a href="customer-index.jsp" class="active">Home</a></li>
+						<li><a href="#" data-toggle="dropdown"><%=c.getFname() %><span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="customer-register.jsp">Register</a></li>
-								<li><a href="customer-login.jsp">Login</a></li>
+								<li><a href="customer-profile.jsp">Profile</a></li>
+								<li><a href="customer-change-password.jsp">Change Password</a></li>
+								<li><a href="logout.jsp">Logout</a>
 							</ul>
 						</li>
-						<li><a href="#" data-toggle="dropdown">Admin<span class="caret"></span></a>
+						<li><a href="#" data-toggle="dropdown">Activity<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="admin-login.jsp">Login</a></li>
+								<li><a href="register-pin.jsp">Register Pin</a></li>
+								<li><a href="deposit-money.jsp">Deposit Money</a></li>
+								<li><a href="customer-send-money.jsp">Send Money</a></li>
+								<li><a href="transactions.jsp">View Transactions</a></li>
+								<li><a href="account-balance.jsp">Account Balance</a></li>
+								<li><a href="apply-debit.jsp">Apply Debit</a></li>
+								<li><a href="apply-credit.jsp">Apply for Credit Card</a></li>
 								
 							</ul>
 						</li>    
-						<li><a href="services.jsp" class="scroll">services</a></li>    
-						<li><a href="gallery.jsp" class="scroll">Gallery</a></li>  
-						<li><a href="about.jsp" class="scroll">About</a></li>  
-							
+						    
+						<li><a href="givereview.jsp" class="scroll">Review Us</a></li>  
 						
+							
+						<li><a href="contact.jsp" class="scroll">Contact Us</a></li>
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
@@ -145,13 +172,30 @@
 						</tr>
 					
 						
-						<tr><td>
-							<input type="email" name="email" placeholder="Enter Email"  required="">
+						<tr><td colspan="2">
+							<input type="email" name="email" placeholder="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
 							</td>
-							<td colspan="2">&nbsp;</td>
+							
+						</tr>
+						<tr>
+							<td colspan="3">&nbsp;</td>
+						</tr>
+					
+						
+						<tr><td colspan="2">
+							<input type="email" name="email" placeholder="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+							</td>
+							
+						</tr>
+						<tr>
+							<td colspan="5">&nbsp;</td>
 						</tr>
 						
+						<tr>
+							<td align="center" colspan="5"><input type="text" name="password" placeholder="Enter Your Password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" required="">
+						</td>
 						
+						</tr>
 						<tr>
 						<td colspan="5">&nbsp;</td>
 						</tr>
@@ -160,9 +204,9 @@
 						</tr>
 						
 						<tr >
-						
+						<td><a href="forgot-password.jsp">&nbsp;&nbsp;Forgot Password?</a></td>
 						<td align="center">
-						<input type="submit" name="action" value="get otp"></td>
+						<input type="submit" name="action" value="Login"></td>
 						<td>&nbsp;</td>
 						</tr>
 						<tr>

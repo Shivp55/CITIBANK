@@ -168,6 +168,16 @@ else{
 							%>
 						
 						</h4>
+						<h4>
+						<%String deposit5=(String)request.getAttribute("deposit5"); %>
+						<%if(deposit5!=null){
+							out.print(deposit5);
+							
+						}	
+							%>
+						
+						</h4>
+						
 					</div> 
 					
 				</div>
@@ -205,7 +215,9 @@ else{
 							<td align="center" colspan="5"><input type="text" name="name" placeholder="Enter Customer Name" >
 						</td>
 						<td>
-							<input type="text" name="message" placeholder="Enter message">
+							<select id="select" onchange="select();" name="message">
+								  <option selected>Deposited</option>
+								  	</select>
 							</td>
 						</tr>
 						<tr>
@@ -296,7 +308,7 @@ else{
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-		<p>© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+	|
 	</div>
 <!--//footer-->	
 	<!-- subscribe -->

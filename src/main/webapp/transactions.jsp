@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="Model.Customer"%>
+    <%@ page import="Model.Amount" %>
+    <%@page import="Dao.AmountDao" %>
+    <%@page import="java.util.*" %>
+    <%@ page import="Model.Transactions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>E-Banking </title>
+<title>Account Balance </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="E-Banking Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -22,9 +27,41 @@
 <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- //web-fonts --> 
-
+<style>
+       table {border: 1px solid black; font-size:12px;font-family:Arial;}
+		th {background: yellow; padding: 10px;}
+		td{padding: 10px;}
+		
+		.current-row{background-color:coral;}
+		.current-col{background-color:cyan;}
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+			$(document).ready(function() {
+			 $('.table-row').hover(function() { $(this).addClass('current-row');}, 
+			function() { $(this).removeClass('current-row'); });
+			 
+			 $("th").hover(function() {
+			var index = $(this).index();
+			$("th.table-header, td").filter(":nth-child(" + (index+1) + ")")
+			.addClass("current-col");
+			 }, function() { var index = $(this).index();
+			$("th.table-header, td").removeClass("current-col"); });
+			}); 
+</script>
 </head>
 <body> 
+<%
+Customer c=null;
+if(session.getAttribute("data")!=null){
+	c=(Customer)session.getAttribute("data");
+}
+else{
+	response.sendRedirect("customer-login.jsp");
+}
+%>
+
 	<!-- header -->
 	<div class="headerw3-agile"> 
 		<div class="header-w3mdl"><!-- header-two --> 
@@ -56,7 +93,7 @@
 	</div>	
 	<!-- //header -->  
 	<!-- banner -->
-	<div class="banner inner-banner">
+	<div >
 		<div class="header-nav"><!-- header-three --> 	
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
@@ -68,24 +105,31 @@
 				<!-- top-nav -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="index.jsp" class="active">Home</a></li>
-						<li><a href="#" data-toggle="dropdown">Customer<span class="caret"></span></a>
+						<li><a href="customer-index.jsp" class="active">Home</a></li>
+						<li><a href="#" data-toggle="dropdown"><%=c.getFname() %><span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="customer-register.jsp">Register</a></li>
-								<li><a href="customer-login.jsp">Login</a></li>
+								<li><a href="customer-profile.jsp">Profile</a></li>
+								<li><a href="customer-change-password.jsp">Change Password</a></li>
+								<li><a href="logout.jsp">Logout</a>
 							</ul>
 						</li>
-						<li><a href="#" data-toggle="dropdown">Admin<span class="caret"></span></a>
+						<li><a href="#" data-toggle="dropdown">Activity<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="admin-login.jsp">Login</a></li>
+								<li><a href="register-pin.jsp">Register Pin</a></li>
+								<li><a href="deposit-money.jsp">Deposit Money</a></li>
+								<li><a href="customer-send-money.jsp">Send Money</a></li>
+								<li><a href="transactions.jsp">View Transactions</a></li>
+								<li><a href="account-balance.jsp">Account Balance</a></li>
+								<li><a href="apply-debit.jsp">Apply Debit</a></li>
+								<li><a href="apply-credit.jsp">Apply for Credit Card</a></li>
 								
 							</ul>
 						</li>    
-						<li><a href="services.jsp" class="scroll">services</a></li>    
-						<li><a href="gallery.jsp" class="scroll">Gallery</a></li>  
-						<li><a href="about.jsp" class="scroll">About</a></li>  
-							
+						    
+						<li><a href="givereview.jsp" class="scroll">Review Us</a></li>  
 						
+							
+						<li><a href="contact.jsp" class="scroll">Contact Us</a></li>
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
@@ -95,88 +139,42 @@
 		<!-- banner -->
 	</div>	
 	<!-- contact -->
+	<section id="banner">
 	<div class="w3ls-section contact">
 		<div class="container"> 
 			<div class="w3ls-title">
-				<h2 class="h3-w3l">Customer Login</h2> 
+				<h2 class="h3-w3l">Customer Transactions</h2> 
 			</div>  
 			
 			<div class="contact_wthreerow agileits-w3layouts">
-			<div class="col-md-5 agileits_w3layouts_contact_gridl">
-					<div class="agileits_mail_grid_right_grid">
-						<h3>Login</h4>
-						<br><br>
-						<h4>
-						
-						<%String reg=(String)request.getAttribute("register"); %>
-						<%if(reg!=null){
-							out.print(reg);	
-						}
-						%>
-						</h4>
-						<h4>
-						
-						<%String data=(String)request.getAttribute("data"); %>
-						<%if(data!=null){
-							out.print(data);	
-						}
-						%>
-						</h4>					
-						<h4>
-						
-						<%String alreg=(String)request.getAttribute("alreg"); %>
-						<%if(alreg!=null){
-							out.print(alreg);	
-						}
-						%>
-						</h4>
-						</div> 
-					
-				</div>
+		
+						<div style="color:black;"   >
+					<table style="width:100%; border:2px solid dashed black;">	
+					 <thead>
+								<tr>
+								<th class="table-header" >Account Number</th>
+								<th class="table-header">Amount</th>
+								<th class="table-header">Message</th>
+								</tr>
+								 </thead>
+								 <tbody>
+								 <%int id=c.getId(); %>
+								 <%List<Transactions> list=AmountDao.getAllTransactions(id); %>
+								 <%for(Transactions t:list){ %>
+								<tr class="table-row">
+								<td><%=t.getId() %></td>
+								<td><%=t.getAmount() %></td>
+								<td><%=t.getMessage() %></td>
+								<%} %>
+								 </tbody>
+								</table>    
 				
-				<div class="col-md-7 w3l_contact_form">
-				
-					
-					<form action="CustomerController" method="post" >
-					<table style="border:4px solid black;" >
-					
-						<tr>
-							<td colspan="3">&nbsp;</td>
-						</tr>
-					
-						
-						<tr><td>
-							<input type="email" name="email" placeholder="Enter Email"  required="">
-							</td>
-							<td colspan="2">&nbsp;</td>
-						</tr>
-						
-						
-						<tr>
-						<td colspan="5">&nbsp;</td>
-						</tr>
-						<tr>
-						<td colspan="5">&nbsp;</td>
-						</tr>
-						
-						<tr >
-						
-						<td align="center">
-						<input type="submit" name="action" value="get otp"></td>
-						<td>&nbsp;</td>
-						</tr>
-						<tr>
-						<td colspan="3">&nbsp;</td>
-						</tr>
-						</table>
-					</form>
-					
-				</div>
-				
-				
-			</div>
+				<a href="customer-index.jsp" style="border:1px solid black; color:black; margin:500px; ">Back to Home Page</a>
+							</div>
 		</div>
+		</div>	
 	</div>
+	</section>
 	<br><br>
 	<!-- //contact --> 
 
@@ -201,7 +199,7 @@
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-	|
+		
 	</div>
 <!--//footer-->	
 	<!-- subscribe -->

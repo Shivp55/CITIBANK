@@ -497,7 +497,7 @@ application.setAttribute("counter", counter);
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-		<p>© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+	
 	</div>
 <!--//footer-->	
 

@@ -119,7 +119,7 @@ else{
 				<h2 class="h3-w3l" >Customer Update</h2> 
 			</div>
 					<form action="CustomerController" method="post" >
-					<table style="border:4px solid black; background:#fff;" align="center" >
+					<table class="table-btn"style="border:4px solid black; background:#fff;" align="center" >
 					<tr>
 						<td ><input type="hidden" name="id" value="<%=c.getId()%>"></td>
 						
@@ -138,7 +138,7 @@ else{
 						</tr>
 						
 						<tr>
-						<td align="center" colspan="3">
+						<td align="center" >
 						<select id="select" onchange="select();" name="selectaccnt" >
 								  <option selected><%=c.getSelectaccnt() %></option>
 								  <option >Current</option>
@@ -162,7 +162,7 @@ else{
 						</tr>
 						
 						<tr>
-						<td colspan="2">
+						<td colspan="3">
 						<input type="email" name="email" placeholder="Enter Email" value="<%=c.getEmail() %>" required="">
 						</td>
 						
@@ -213,7 +213,7 @@ else{
      </div>
 </div>	 
 <div class="w3_agile-copyright text-center">
-		<p>© 2017 E-Banking. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+	|
 	</div>
 <!--//footer-->	
 	<!-- subscribe -->

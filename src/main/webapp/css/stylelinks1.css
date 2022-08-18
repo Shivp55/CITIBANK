@@ -1,6 +1,6 @@
 
 #banner{
-    background: radial-gradient(rgba(0,0,0,0.5),#49c7ed);
+    background: radial-gradient(rgba(0.5,0,0.5),#49c7ed),url(../images/background1.jpg);
     background-size: cover;
     background-position:center ;
     height: 100vh;

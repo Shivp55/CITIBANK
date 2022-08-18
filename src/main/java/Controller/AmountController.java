@@ -42,6 +42,9 @@ public class AmountController extends HttpServlet {
 		doGet(request, response);
 		String action=request.getParameter("action");
 		if(action.equalsIgnoreCase("Deposit")) {
+			int id=Integer.parseInt(request.getParameter("id"));
+			String message=request.getParameter("message");
+			String amount=request.getParameter("amount");
 			Amount a=new Amount();
 			int pin1=Integer.parseInt(request.getParameter("pin1"));
 			int pin2=Integer.parseInt(request.getParameter("pin2"));
@@ -50,10 +53,12 @@ public class AmountController extends HttpServlet {
 			a.setAccountname(request.getParameter("name"));
 			a.setMessage(request.getParameter("message"));
 			boolean flag1=AmountDao.checkBalance(a);
-			
+			boolean flag2=AmountDao.isPinRegistered(id);
+			if(flag2==true) {
 			if(flag1==true) {
 				if(pin1==pin2) {
 					AmountDao.updateAmount(a);
+					AmountDao.viewTransactions(id, amount, message);
 					request.setAttribute("deposit1", "Amount Updated");
 					request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
 				}
@@ -63,18 +68,24 @@ public class AmountController extends HttpServlet {
 				request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
 				}
 				
-			}
-				
-			else {
-				if(pin1==pin2) {
-				AmountDao.InsertAmount(a);
-				request.setAttribute("deposit3", "Amount Inserted");
-				request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
 				}
+					
 				else {
-					request.setAttribute("deposit4", "Declined..Check Pin");
+					if(pin1==pin2) {
+					AmountDao.InsertAmount(a);
+					AmountDao.viewTransactions(id, amount, message);
+					request.setAttribute("deposit3", "Amount Inserted");
 					request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
 					}
+					else {
+						request.setAttribute("deposit4", "Declined..Check Pin");
+						request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
+						}
+				}
+			}
+			else {
+				request.setAttribute("deposit5", "Pin not Registered ");
+				request.getRequestDispatcher("deposit-money.jsp").forward(request, response);
 			}
 			
 	}
@@ -83,6 +94,7 @@ public class AmountController extends HttpServlet {
 			int pin1=Integer.parseInt(request.getParameter("pin1"));
 			int pin2=Integer.parseInt(request.getParameter("pin2"));
 			int id=Integer.parseInt(request.getParameter("id"));
+			String message=request.getParameter("message");
 			int balance1=Integer.parseInt(request.getParameter("amount"));
 			String amount=request.getParameter("amount");
 			Amount a=new Amount();
@@ -95,6 +107,7 @@ public class AmountController extends HttpServlet {
 			if(balance>=balance1) {
 				if(pin1==pin2) {
 					AmountDao.sendMoney(a);
+					AmountDao.viewTransactions(id, amount, message);
 					AmountDao.updateMoney(id, amount);
 					request.setAttribute("sent", "Money Sent Successfully");
 					request.getRequestDispatcher("customer-send-money.jsp").forward(request, response);
